@@ -278,10 +278,16 @@ def runBERT(train, dev, test, model_name, unique_tags, epochs = 10, BATCH_SIZE =
     dev_pred_tags_flat, dev_valid_tags_flat, dev_tokens_flat = trainModel(train, dev, model, tokenizer, optimizer, scheduler, epochs, unique_tags)
     test_valid_tags_flat, test_pred_tags_flat, test_tokens_flat = predict(test, model, tokenizer, unique_tags)
 
-    dev = [dev_pred_tags_flat, dev_valid_tags_flat, dev_tokens_flat]
-    test = [test_valid_tags_flat, test_pred_tags_flat, test_tokens_flat]
+    dev = pd.DataFrame()
+    dev["tokens"] = dev_tokens_flat
+    dev["bio_only"] = dev_valid_tags_flat
+    dev["prediction"] = dev_pred_tags_flat
     
-    return dev, test
+    test = pd.DataFrame()
+    test["tokens"] = test_tokens_flat
+    test["bio_only"] = test_valid_tags_flat
+    test["prediction"] = test_pred_tags_flat
 
+    return dev, test
 
 

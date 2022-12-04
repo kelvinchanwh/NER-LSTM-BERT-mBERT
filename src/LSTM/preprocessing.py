@@ -36,6 +36,8 @@ def extract_features(txt, token_vocab, oov):
     txt_copy = txt.copy()
     tokinds = [token_index(u, token_vocab, oov) for u in txt_copy['token']]
     txt_copy['token_indices'] = tokinds
+    bioints = [bio_index(b) for b in txt_copy['bio_only']]
+    txt_copy['bio_only'] = bioints
     return txt_copy
 
 def tokens2sequences(txt_in):
@@ -78,7 +80,7 @@ def pad_sequence_and_labels(seqs, padtok, padlab, seq_length):
                                     dtype='int32', padding='post', truncating='post', value=padlab)
     # convert those labels to one-hot encoding
     n_labs = padlab + 1  # we have 3 labels: B, I, O (0, 1, 2) + the pad label 3
-    labs_onehot = [tf.keras.to_categorical(i, num_classes=n_labs) for i in labs_padded]
+    labs_onehot = [tf.keras.utils.to_categorical(i, num_classes=n_labs) for i in labs_padded]
 
     return seqs_padded, labs_padded, labs_onehot
 

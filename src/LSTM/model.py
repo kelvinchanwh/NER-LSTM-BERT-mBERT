@@ -4,7 +4,7 @@ import copy
 import numpy as np
 import pandas as pd
 
-import preprocessing
+import LSTM.preprocessing as preprocessing
 
 
 def calc_init_bias(train_labs_padded):

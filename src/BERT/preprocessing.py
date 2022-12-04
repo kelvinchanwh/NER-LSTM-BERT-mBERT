@@ -77,7 +77,7 @@ def preprocess(train_url, dev_url, test_url, model_name, MAX_LEN = 75, BATCH_SIZ
     dev_list = read_wnut(dev_url)
     test_list = read_wnut(test_url)
 
-    unique_tags = list(set(tag for doc in train_list for tag in doc["labels"]))
+    unique_tags = list(set(tag for doc in train_list for tag in doc["bio_only"]))
     unique_tags.append("PAD")
     tag2idx = {t: i for i, t in enumerate(unique_tags)}
 

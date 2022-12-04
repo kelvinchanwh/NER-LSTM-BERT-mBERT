@@ -1,9 +1,9 @@
 from sklearn.metrics import classification_report
 
 class Evaluate():
-    def __init__():
-        wnut_report = []
-        surf_report = []
+    def __init__(self):
+        self.wnut_report = []
+        self.surf_report = []
 
     def wnut_evaluate(self, txt, verbose = 0):
         '''entity evaluation: we evaluate by whole named entities'''
