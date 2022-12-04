@@ -51,6 +51,6 @@ class Evaluate():
         print ("F1: %.2f"%((sum([report[2] for report in self.wnut_report])/len(self.wnut_report))*100.))
 
         print ("\nSurface Level")
-        print ("Precision: %.2f"%((sum([list(report["Weighted"].values())[0] for report in self.surf_report])/len(self.surf_report))*100.))
-        print ("Recall: %.2f"%((sum([list(report["Weighted"].values())[1] for report in self.surf_report])/len(self.surf_report))*100.))
-        print ("F1: %.2f"%((sum([list(report["Weighted"].values())[2] for report in self.surf_report])/len(self.surf_report))*100.))
+        print ("Precision: %.2f"%((sum([list(report["weighted avg"].values())[0] for report in self.surf_report])/len(self.surf_report))*100.))
+        print ("Recall: %.2f"%((sum([list(report["weighted avg"].values())[1] for report in self.surf_report])/len(self.surf_report))*100.))
+        print ("F1: %.2f"%((sum([list(report["weighted avg"].values())[2] for report in self.surf_report])/len(self.surf_report))*100.))
